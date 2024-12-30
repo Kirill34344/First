@@ -6,7 +6,7 @@ print("Welcome to the game 'Guess the number'!")
 
 def main():
 
-    lower, upper = get_number_range()
+    get_number_range()
 
     play_game(lower, upper)
 
@@ -17,16 +17,21 @@ def is_valid(user_input, lower, upper):
     return user_input.isdigit() and lower <= int(user_input) <= upper
 
 
+def lower():
+    lower = int(input("Lower limit: "))
+    return lower
+
+def upper():
+    upper = int(input("Upper limit: "))
+    return upper
+
+
 def get_number_range():
     while True:
         print("\nLet's set the range of numbers:")
-        lower = int(input("Lower limit: "))
-        upper = int(input("Upper limit: "))
-        if lower >= upper:
-            print("The lower limit must be less than the upper limit. Try again.")
-            continue
+        lower()
+        upper()
         break
-    return lower, upper
 
 
 def play_game(lower, upper):
