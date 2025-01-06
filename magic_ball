@@ -9,44 +9,28 @@ answers = [
 ]
 
 
-def main():
-    print("Hello World, I am a magic ball and I know the answer to any question you have.")
+def greet_user():
+    print("Привет Мир, я магический шар, и я знаю ответ на любой твой вопрос.")
 
-    user_name = input("What is your name? ")
+    user_name = input("Как вас зовут? ")
 
-    print(f"Hello, {user_name}!")
+    print(f"Привет, {user_name}!")
 
-main()
-    
+greet_user()
 
 def play_game():
-    question = input("Ask your question: ")
+    input("Задайте ваш вопрос: ")
     print(choice(answers))
 
 play_game()
 
-
-def  repeat_y():
-    play_game()
-
-def repeat_n():
-    print("Come back if you have ane questions!")
-
-def repeat_not_yn():
-    print("Please enter 'y' to new game or 'n' to exit.")
-
-
-
 while True:
-    repeat = input("Would you like to ask another question? (y/n): ").lower()
+    repeat = input("Хотите задать еще один вопрос? (y/n): ").lower()
     if repeat == "y":
-        repeat_y()
+        play_game()
     elif repeat == "n":
-        repeat_n()
+        print("Возвращайся, если возникнут вопросы!")
         break
     else:
-        repeat_not_yn()
-
-
-# try except
-# рекурсия на 29 строке
+        print("Пожалуйста, введите 'y' для новой игры или 'n' для выхода.")
+        
