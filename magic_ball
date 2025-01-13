@@ -15,20 +15,20 @@ def play_game():
 
 
 def repeat_func():
-    flag = True
     repeat = input("Would you like to ask another question? (y/n): ").lower()
     if repeat == "y":
         play_game()
     elif repeat == "n":
         print("Come back, if you have any questions!")
         flag = False
+        return flag 
     else:
         print("Please enter 'y' to new game or 'n' to exit.")
     return repeat
 
 
 
-def main():
+def main(flag):
     print("Hello World, I am a magic ball and I know the answer to any question you have.")
 
     user_name = input("What is your name? ")
@@ -36,8 +36,9 @@ def main():
     print(f"Hello, {user_name}!")
 
     play_game()
-
-    while flag != False:
+    flag_1 = flag
+    while flag_1 != False:
         repeat_func()
 
-main()
+
+main(flag=True)
