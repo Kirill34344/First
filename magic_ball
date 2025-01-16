@@ -1,11 +1,11 @@
 from random import choice
 
 answers = [
-    "Бесспорно", "Мне кажется - да", "Пока неясно, попробуй снова", "Даже не думай",
-    "Предрешено", "Вероятнее всего", "Спроси позже", "Мой ответ - нет",
-    "Никаких сомнений", "Хорошие перспективы", "Лучше не рассказывать", "По моим данным - нет",
-    "Определённо да", "Знаки говорят - да", "Сейчас нельзя предсказать", "Перспективы не очень хорошие",
-    "Можешь быть уверен в этом", "Да. Сконцентрируйся и спроси опять", "Весьма сомнительно"
+    "Undoubtedly", "I think so", "It's unclear for now, try again", "Don't even think about it",
+    "It's predetermined", "Most likely", "Ask later", "My answer is no",
+    "No doubt about it", "Good prospects", "Better not tell you", "According to my data, no",
+    "Definitely yes", "The signs say yes", "Cannot predict now", "The outlook isn't very good",
+    "You can be sure of it", "Yes. Focus and ask again"
 ]
 
 
@@ -17,16 +17,14 @@ def play_game():
 def repeat_func():
     repeat = input("Would you like to ask another question? (y/n): ").lower()
     if repeat == "y":
-        repeat = "y"
         play_game()
     elif repeat == "n":
         print("Come back, if you have any questions!")
         repeat = "n"
-        return
+        # return repeat
     else:
         print("Please enter 'y' to new game or 'n' to exit.")
-
-
+    return repeat
 
 def main():
     print("Hello World, I am a magic ball and I know the answer to any question you have.")
@@ -34,8 +32,10 @@ def main():
     user_name = input("What is your name? ")
 
     print(f"Hello, {user_name}!")
+
     play_game()
-    repeat = ""
+
+    repeat = "y"
     while repeat != "n":
         repeat = repeat_func()
 
