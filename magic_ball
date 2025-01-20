@@ -18,12 +18,13 @@ def repeat_func():
     repeat = input("Would you like to ask another question? (y/n): ").lower()
     if repeat == "y":
         play_game()
+        repeat = True
     elif repeat == "n":
         print("Come back, if you have any questions!")
-        repeat = "n"
-        # return repeat
+        repeat = False
     else:
         print("Please enter 'y' to new game or 'n' to exit.")
+        repeat = True
     return repeat
 
 def main():
@@ -35,8 +36,8 @@ def main():
 
     play_game()
 
-    repeat = "y"
-    while repeat != "n":
+    repeat = True
+    while repeat == True:
         repeat = repeat_func()
 
 
