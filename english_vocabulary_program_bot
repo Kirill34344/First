@@ -1,12 +1,14 @@
 def user_input():
-    user_input_words = (input("Enter the word: "))
     words = []
-    words.append(user_input_words)
-    return words
+    user_input_repeat = int(input("How much do you enter the word: "))
+    for _ in range(user_input_repeat):
+        user_input_words = (input("Enter the word: "))
+        words.append(user_input_words)
+    print(words)
 
 
 def repeat_func():
-    repeat = input("вы хотите ввести еще одно слово?")
+    repeat = input("do you want to enter another word? (y/n): ")
     if repeat == "y":
         user_input()
     elif repeat == "n":
@@ -14,7 +16,7 @@ def repeat_func():
         return False
     else:
         print("Please enter 'y' to new game or 'n' to exit.")
-    return True
+        return True
 
 
 def main():
@@ -28,6 +30,5 @@ def main():
     while repeat == True:
         repeat = repeat_func()
 
-    print(words)
 
 main()
