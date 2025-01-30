@@ -1,43 +1,34 @@
-def user_input():
-    words = []
+def user_input(words):
     user_input_repeat = int(input("How much do you enter the word: "))
     for _ in range(user_input_repeat):
         user_input_words = (input("Enter the word: "))
         words.append(user_input_words)
     print(words)
-    return words
 
 
-def repeat_user_input():
-    user_input_repeat = int(input("How much do you enter the word: "))
-    for _ in range(user_input_repeat):
-        user_input_words = (input("Enter the word: "))
-        words.extend(user_input_words)
-    print(words)
-
-
-def repeat_func():
+def repeat_func(words):
     repeat = input("do you want to enter another word? (y/n): ")
     if repeat == "y":
-        repeat_user_input()
+        user_input(words)
     elif repeat == "n":
+        print(words)
         print("come back")
         return False
     else:
         print("Please enter 'y' to new game or 'n' to exit.")
-        return True
+    return True
 
 
 def main():
     print("Welcome to the English vocabulary program!")
 
-    user_input()
+    words = []
 
-    repeat_func()
+    user_input(words)
 
     repeat = True
     while repeat == True:
-        repeat = repeat_func()
+        repeat = repeat_func(words)
 
 
 main()
