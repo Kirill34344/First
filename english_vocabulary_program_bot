@@ -5,12 +5,21 @@ def user_input():
         user_input_words = (input("Enter the word: "))
         words.append(user_input_words)
     print(words)
+    return words
+
+
+def repeat_user_input():
+    user_input_repeat = int(input("How much do you enter the word: "))
+    for _ in range(user_input_repeat):
+        user_input_words = (input("Enter the word: "))
+        words.extend(user_input_words)
+    print(words)
 
 
 def repeat_func():
     repeat = input("do you want to enter another word? (y/n): ")
     if repeat == "y":
-        user_input()
+        repeat_user_input()
     elif repeat == "n":
         print("come back")
         return False
