@@ -7,9 +7,12 @@ def user_input(words):
 
 
 def repeat_func(words):
-    repeat = input("do you want to enter another word? (y/n): ")
-    if repeat == "y":
+    repeat = input("do you want to enter another word or view words? (y/n): ")
+    repeat = input("Enter 1 to enter words or 2 to view words: ")
+    if repeat == "1":
         user_input(words)
+    elif repeat == "2":
+        print(words)
     elif repeat == "n":
         print(words)
         print("come back")
