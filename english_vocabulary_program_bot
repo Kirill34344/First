@@ -1,3 +1,6 @@
+import random
+
+
 def user_input(words):
     user_input_repeat = int(input("How much do you enter the word: "))
     for _ in range(user_input_repeat):
@@ -7,12 +10,11 @@ def user_input(words):
 
 
 def repeat_func(words):
-    repeat = input("do you want to enter another word or view words? (y/n): ")
-    repeat = input("Enter 1 to enter words or 2 to view words: ")
-    if repeat == "1":
+    repeat = input("do you want to enter another word or view 5 words or end game? (y/v/n): ")
+    if repeat == "y":
         user_input(words)
-    elif repeat == "2":
-        print(words)
+    elif repeat == "v":
+        output_words(words)
     elif repeat == "n":
         print(words)
         print("come back")
@@ -20,6 +22,13 @@ def repeat_func(words):
     else:
         print("Please enter 'y' to new game or 'n' to exit.")
     return True
+
+
+def output_words(words):
+    """Эта функция должна выводить 5 слов из списка words в случайном порядке"""
+    number = random.random()
+    for i in range(4):
+        print(words[number])
 
 
 def main():
