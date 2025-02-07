@@ -6,7 +6,6 @@ def user_input(words):
     for _ in range(user_input_repeat):
         user_input_words = (input("Enter the word: "))
         words.append(user_input_words)
-    print(words)
 
 
 def repeat_func(words):
@@ -16,7 +15,6 @@ def repeat_func(words):
     elif repeat == "v":
         output_words(words)
     elif repeat == "n":
-        print(words)
         print("come back")
         return False
     else:
@@ -25,16 +23,15 @@ def repeat_func(words):
 
 
 def output_words(words):
-    """Эта функция должна выводить 5 слов из списка words в случайном порядке"""
-    number = random.random()
-    for i in range(4):
-        print(words[number])
+    number = random.shuffle(words)
+    for i in range(5):
+        print(words[i])
 
 
 def main():
     print("Welcome to the English vocabulary program!")
 
-    words = []
+    words = ["a", "b", "c", "d", "f"]
 
     user_input(words)
 
