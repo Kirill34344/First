@@ -1,11 +1,12 @@
-import random 
+import random
 
-
-a = [1, 2, 3, 4, 5]
-
-
+num = [1, 2, 3, 4, 5]
+print(num[0:5])
 
 for i in range(5):
-    b = round(random.random() * 4)
-    print(a[b])
+    a = int(random.random() * len(num))
+    b = int(random.random() * len(num))
+    num[a], num[b] = num[b], num[a]
 
+
+print(num)
