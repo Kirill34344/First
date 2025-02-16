@@ -23,11 +23,11 @@ def repeat_func(words):
 
 
 def output_words(words):
-    # number = round(random.random() * 4)
     for _ in range(5):
-        number = round(random.random() * 5)
-        print(words[number])
-
+        a = int(random.random() * len(words))
+        b = int(random.random() * len(words))
+        words[a], words[b] = words[b], words[a]
+    print(words[:5])
 
 def main():
     print("Welcome to the English vocabulary program!")
