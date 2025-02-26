@@ -1,12 +1,12 @@
 import random
 
-num = [1, 2, 3, 4, 5]
-print(num[0:5])
+words = ["1", "2", "3", "4", "5"]
+n = len(words)
+result = []
 
-for i in range(5):
-    a = int(random.random() * len(num))
-    b = int(random.random() * len(num))
-    num[a], num[b] = num[b], num[a]
+for i in range(n):
+    index = int(random.random() * (n - i))
+    result.append(words[index])
+    words[index], words[n - i - 1] = words[n - i - 1], words[index]
 
-
-print(num)
+print(result)
