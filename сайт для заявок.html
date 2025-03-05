@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявки</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        input, textarea, button { display: block; margin: 10px 0; width: 500px; padding: 10px; }
+        #adminSection { display: none; }
+    </style>
+</head>
+<body>
+
+    <h2>Оставить заявку</h2>
+    <input type="text" id="name" placeholder="Ваше имя">
+    <input type="email" id="email" placeholder="Ваш email">
+    <textarea id="message" placeholder="Ваше сообщение"></textarea>
+    <button onclick="submitRequest()">Отправить</button>
+
+    <hr>
+
+    <h2>Вход для администратора</h2>
+    <input type="password" id="adminPassword" placeholder="Введите пароль">
+    <button onclick="loginAdmin()">Войти</button>
+
+    <div id="adminSection">
+        <h2>Список заявок</h2>
+        <button onclick="loadRequests()">Обновить список</button>
+        <ul id="requestList"></ul>
+    </div>
+
+    <script>
+        function submitRequest() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            fetch('/api/submit/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, message })
+            })
+            .then(response => response.json())
+            .then(data => alert('Заявка отправлена!'))
+            .catch(error => console.error('Ошибка:', error));
+        }
+
+        function loginAdmin() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === "admin123") {  // Упрощённый вариант входа
+                document.getElementById('adminSection').style.display = "block";
+            } else {
+                alert("Неверный пароль!");
+            }
+        }
+
+        function loadRequests() {
+            fetch('/api/view/')
+            .then(response => response.json())
+            .then(data => {
+                const requestList = document.getElementById('requestList');
+                requestList.innerHTML = "";
+                data.forEach(req => {
+                    const li = document.createElement('li');
+                    li.textContent = `(${req.created_at}) ${req.name}: ${req.message}`;
+                    requestList.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Ошибка:', error));
+        }
+    </script>
+
+</body>
+</html>
