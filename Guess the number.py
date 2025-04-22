@@ -46,7 +46,7 @@ def repeat_game():
 
 def main():
 
-    print("Welcome to the game 'Guess the number'!")
+    #print("Welcome to the game 'Guess the number'!")
 
     print("\nLet's set the range of numbers:")
 
