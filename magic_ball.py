@@ -9,23 +9,22 @@ answers = [
 ]
 
 
-def play_game():
+def ask_question_and_get_answer():
     input("Ask your question: ")
     print(choice(answers))
 
 
-def repeat_func():
-    repeat = input("Would you like to ask another question? (y/n): ").lower()
-    if repeat == "y":
-        play_game()
-        repeat = True
-    elif repeat == "n":
+def should_repeat_game():
+    user_input = input("Would you like to ask another question? (y/n): ").lower()
+    if user_input == "y":
+        ask_question_and_get_answer()
+    elif user_input == "n":
         print("Come back, if you have any questions!")
-        repeat = False
+        return False
     else:
         print("Please enter 'y' to new game or 'n' to exit.")
-        repeat = True
-    return repeat
+    return True
+
 
 def main():
     print("Hello World, I am a magic ball and I know the answer to any question you have.")
@@ -34,11 +33,11 @@ def main():
 
     print(f"Hello, {user_name}!")
 
-    play_game()
+    ask_question_and_get_answer()
 
     repeat = True
-    while repeat != False:
-        repeat = repeat_func()
+    while repeat == True:
+        repeat = should_repeat_game()
 
 
 main()

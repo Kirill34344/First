@@ -1,49 +1,51 @@
 import random
 
+class Words:
+    def __init__(self):
+        self.__array = ["a", "b", "c", "d", "f"]
 
-def user_input(array):
-    user_input_repeat = int(input("How much do you enter the word: "))
-    for _ in range(user_input_repeat):
-        user_input_words = (input("Enter the word: "))
-        array.append(user_input_words)
+    def user_input(self):
+        user_input_repeat = int(input("How many words do you want to enter: "))
+        for _ in range(user_input_repeat):
+            user_input_words = input("Enter the word: ")
+            self.__array.append(user_input_words)
+
+    def get_random_elements(self, k):
+        n = len(self.__array)
+        arr_copy = self.__array[:]
+        result = []
+
+        for i in range(k):
+            index = int(random.random() * (n - i))
+            result.append(arr_copy[index])
+            arr_copy[index], arr_copy[n - i - 1] = arr_copy[n - i - 1], arr_copy[index]
+        print("Random words:", result)
 
 
-def repeat_func(array, k):
-    repeat = input("do you want to enter another word or view 5 words or end game? (y/v/n): ")
+def repeat_func(w, k):
+    repeat = input("Do you want to enter another word (y), view 5 words (v), or end game (n)? ")
     if repeat == "y":
-        user_input(array)
+        w.user_input()
     elif repeat == "v":
-        get_random_elements(array, k)
+        w.get_random_elements(k)
     elif repeat == "n":
-        print("come back")
+        print("Come back again!")
         return False
     else:
-        print("Please enter 'y' to new game or 'n' to exit.")
+        print("Please enter 'y', 'v' or 'n'.")
     return True
-
-
-def get_random_elements(arr, k):
-    n = len(arr)
-    result = []
-
-    for i in range(k):
-        index = int(random.random() * (n - i))
-        result.append(arr[index])
-        arr[index], arr[n - i - 1] = arr[n - i - 1], arr[index]
-    print(result)
 
 
 def main():
     print("Welcome to the English vocabulary program!")
-
-    array = ["a", "b", "c", "d", "f"]
     k = 5
-
-    user_input(array)
+    w = Words()
+    w.user_input()
 
     repeat = True
-    while repeat == True:
-        repeat = repeat_func(array, k)
+    while repeat:
+        repeat = repeat_func(w, k)
 
 
-main()
+if __name__ == "__main__":
+    main()
