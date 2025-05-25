@@ -5,9 +5,12 @@ class Words:
         self.__words = ["a", "b", "c", "d", "f"]
 
 
-    def add_words(self, user_input_words):
-        self.__words.append(user_input_words)
 
+    def add_words(self, user_input_words):
+        with open("output.txt", "a") as file:
+            self.__words.append(user_input_words)
+            for user_input_words in user_input_words:
+                file.write(user_input_words + "\n")
 
     def get_random_elements(self, k):
         n = len(self.__words)
