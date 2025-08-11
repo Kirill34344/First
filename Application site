@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Application site</title>
+    <a href="Application site.css"></a>
+</head>
+<body>
+    <header>
+        <div class="logo">Заявка плюс</div>
+
+        <nav>
+            <a href="/">Главная</a>
+            <a href="/about">О нас</a>
+            <a href="">Услуги</a>
+            <a href="">Контакты</a>
+        </nav>
+
+        <div class="search">
+            <input type="text" placeholder="Поиск"
+            <button></button>
+        </div>
+    </header>
+</body>
+</html>
